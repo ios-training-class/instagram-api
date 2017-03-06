@@ -3,6 +3,20 @@ var router = require('express').Router();
 var passport = require('passport');
 var User = mongoose.model('User');
 var auth = require('../auth');
+var multer = require('multer');
+var path = require('path');
+var utils = require('../../utils');
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads/images/avatar')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  }
+});
+
+var upload = multer({ storage : storage, fileFilter: utils.imageFilter });
 
 router.get('/user', auth.required, function(req, res, next){
   User.findById(req.payload.id).then(function(user){
@@ -12,7 +26,7 @@ router.get('/user', auth.required, function(req, res, next){
   }).catch(next);
 });
 
-router.put('/user', auth.required, function(req, res, next){
+router.put('/user', [auth.required, upload.single('image')], function(req, res, next){
   User.findById(req.payload.id).then(function(user){
     if(!user){ return res.sendStatus(401); }
 
@@ -26,11 +40,11 @@ router.put('/user', auth.required, function(req, res, next){
     if(typeof req.body.user.bio !== 'undefined'){
       user.bio = req.body.user.bio;
     }
-    if(typeof req.body.user.image !== 'undefined'){
-      user.image = req.body.user.image;
-    }
     if(typeof req.body.user.password !== 'undefined'){
       user.setPassword(req.body.user.password);
+    }
+    if(typeof req.file !== 'undefined'){
+      user.image = '/uploads/images/avatar/' + req.file.filename;
     }
 
     return user.save().then(function(){
@@ -60,7 +74,7 @@ router.post('/users/login', function(req, res, next){
   })(req, res, next);
 });
 
-router.post('/users', function(req, res, next){
+router.post('/users', upload.single('image'), function(req, res, next){
   var user = new User();
 
   user.username = req.body.user.username;
