@@ -5,7 +5,8 @@ var fs = require('fs'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
     cors = require('cors'),
-    errorhandler = require('errorhandler');
+    errorhandler = require('errorhandler'),
+    mongoose = require('mongoose');
 
 var isProduction = process.env.NODE_ENV === 'production';
 
@@ -21,9 +22,23 @@ app.use(bodyParser.json());
 app.use(require('method-override')());
 app.use(express.static(__dirname + '/public'));
 
+app.use(session({ secret: 'instagram', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
+
 if (!isProduction) {
   app.use(errorhandler());
 }
+
+if(isProduction){
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+  mongoose.connect('mongodb://localhost/instagram');
+  mongoose.set('debug', true);
+}
+
+require('./models/User');
+require('./models/Photo');
+require('./models/Comment');
+require('./config/passport');
 
 app.use(require('./routes'));
 
