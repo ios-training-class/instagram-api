@@ -1,0 +1,388 @@
+{
+	"variables": [],
+	"info": {
+		"name": "instagram-clone-api",
+		"_postman_id": "a7398b29-236c-a478-7da0-48c200d96c1c",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"url": "http://localhost:3000/api/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"user\": { \"username\": \"tiennh\", \"email\": \"nguyentien8x@gmail.com\", \"password\": \"123456\" } }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"url": "http://localhost:3000/api/users/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"user\": { \"email\": \"nguyentien8x@gmail.com\", \"password\": \"123456\" } }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get user info",
+			"request": {
+				"url": "http://localhost:3000/api/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YmNlOTk2ZTczNmVlZGE5YmM0MDQ2ZSIsInVzZXJuYW1lIjoidGllbm5oIiwiZXhwIjoxNDkzOTU5ODE5LCJpYXQiOjE0ODg3NzU4MTl9.wBwYQjD_owZLqoA1Vf7DkUtwmD2YQrVQvXM3DkyuNCM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"url": "http://localhost:3000/api/user",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YmNlOTk2ZTczNmVlZGE5YmM0MDQ2ZSIsInVzZXJuYW1lIjoidGllbm5oIiwiZXhwIjoxNDkzOTU5ODE5LCJpYXQiOjE0ODg3NzU4MTl9.wBwYQjD_owZLqoA1Vf7DkUtwmD2YQrVQvXM3DkyuNCM",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"value": "",
+							"type": "file",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add new photos",
+			"request": {
+				"url": "http://localhost:3000/api/photos",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YmNlOTk2ZTczNmVlZGE5YmM0MDQ2ZSIsInVzZXJuYW1lIjoidGllbm5oIiwiZXhwIjoxNDkzOTU5ODE5LCJpYXQiOjE0ODg3NzU4MTl9.wBwYQjD_owZLqoA1Vf7DkUtwmD2YQrVQvXM3DkyuNCM",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"enabled": true,
+							"src": "AAEAAQAAAAAAAAJnAAAAJDgxMzJkNGJiLTUwNDktNDFiZS1iNWZjLWNjN2ExYWMyMDM2OA.png"
+						},
+						{
+							"key": "title",
+							"value": "anh dep hehehedskkksdssss",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "description",
+							"value": "anh dep vai ca dai",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update photos",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YmNlOTk2ZTczNmVlZGE5YmM0MDQ2ZSIsInVzZXJuYW1lIjoidGllbm5oIiwiZXhwIjoxNDkzOTU5ODE5LCJpYXQiOjE0ODg3NzU4MTl9.wBwYQjD_owZLqoA1Vf7DkUtwmD2YQrVQvXM3DkyuNCM",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"enabled": false,
+							"src": "AAEAAQAAAAAAAAJnAAAAJDgxMzJkNGJiLTUwNDktNDFiZS1iNWZjLWNjN2ExYWMyMDM2OA.png"
+						},
+						{
+							"key": "title",
+							"value": "anh dep hehehedskkk",
+							"type": "text",
+							"enabled": false
+						},
+						{
+							"key": "description",
+							"value": "anh dep vai ca dailllllss",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "tagList",
+							"value": "ReactJS",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "tagList",
+							"value": "AngularJS",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get photos",
+			"request": {
+				"url": "http://localhost:3000/api/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YmNlOTk2ZTczNmVlZGE5YmM0MDQ2ZSIsInVzZXJuYW1lIjoidGllbm5oIiwiZXhwIjoxNDkzOTU5ODE5LCJpYXQiOjE0ODg3NzU4MTl9.wBwYQjD_owZLqoA1Vf7DkUtwmD2YQrVQvXM3DkyuNCM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Follow user",
+			"request": {
+				"url": "http://localhost:3000/api/profiles/tiennh/follow",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YzEwOTg2ZGRkY2UyOWI2ODY1YzYyOSIsInVzZXJuYW1lIjoidGllbm5oMiIsImV4cCI6MTQ5NDIyOTg5NCwiaWF0IjoxNDg5MDQ1ODk0fQ.BtkPXXxunR9RT0xSZnGw5WlZJPk7nQ2TBmXahiMy9xk",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get list photos",
+			"request": {
+				"url": "http://localhost:3000/api/photos?offset=0&limit=20&tag=ReactJS",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YmNlOTk2ZTczNmVlZGE5YmM0MDQ2ZSIsInVzZXJuYW1lIjoidGllbm5oIiwiZXhwIjoxNDkzOTU5ODE5LCJpYXQiOjE0ODg3NzU4MTl9.wBwYQjD_owZLqoA1Vf7DkUtwmD2YQrVQvXM3DkyuNCM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get photos feed",
+			"request": {
+				"url": "http://localhost:3000/api/photos/feed",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YzEwOTg2ZGRkY2UyOWI2ODY1YzYyOSIsInVzZXJuYW1lIjoidGllbm5oMiIsImV4cCI6MTQ5NDIzMDM2NSwiaWF0IjoxNDg5MDQ2MzY1fQ.rYZc4nhlLlQgICZq19ibnRQGAq6EQ8YN6UPZPnMwO2I",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get single photo",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep",
+				"method": "GET",
+				"header": [
+					{
+						"key": "//Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YzEwOTg2ZGRkY2UyOWI2ODY1YzYyOSIsInVzZXJuYW1lIjoidGllbm5oMiIsImV4cCI6MTQ5NDIzMDM2NSwiaWF0IjoxNDg5MDQ2MzY1fQ.rYZc4nhlLlQgICZq19ibnRQGAq6EQ8YN6UPZPnMwO2I",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Adding comment to an photo",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep/comments",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YzEwOTg2ZGRkY2UyOWI2ODY1YzYyOSIsInVzZXJuYW1lIjoidGllbm5oMiIsImV4cCI6MTQ5NDIyOTg5NCwiaWF0IjoxNDg5MDQ1ODk0fQ.BtkPXXxunR9RT0xSZnGw5WlZJPk7nQ2TBmXahiMy9xk",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "body",
+							"value": "hihihi",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"enabled": false
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Getting comments to an photo",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep/comments",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YzEwOTg2ZGRkY2UyOWI2ODY1YzYyOSIsInVzZXJuYW1lIjoidGllbm5oMiIsImV4cCI6MTQ5NDIyOTg5NCwiaWF0IjoxNDg5MDQ1ODk0fQ.BtkPXXxunR9RT0xSZnGw5WlZJPk7nQ2TBmXahiMy9xk",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "body",
+							"value": "hihihi",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"enabled": false
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Favoriting an photo",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep/favorite",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YzEwOTg2ZGRkY2UyOWI2ODY1YzYyOSIsInVzZXJuYW1lIjoidGllbm5oMiIsImV4cCI6MTQ5NDIyOTg5NCwiaWF0IjoxNDg5MDQ1ODk0fQ.BtkPXXxunR9RT0xSZnGw5WlZJPk7nQ2TBmXahiMy9xk",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Unfavoriting an photo",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep/favorite",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YzEwOTg2ZGRkY2UyOWI2ODY1YzYyOSIsInVzZXJuYW1lIjoidGllbm5oMiIsImV4cCI6MTQ5NDIyOTg5NCwiaWF0IjoxNDg5MDQ1ODk0fQ.BtkPXXxunR9RT0xSZnGw5WlZJPk7nQ2TBmXahiMy9xk",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get tags",
+			"request": {
+				"url": "http://localhost:3000/api/tags",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4YmNlOTk2ZTczNmVlZGE5YmM0MDQ2ZSIsInVzZXJuYW1lIjoidGllbm5oIiwiZXhwIjoxNDkzOTU5ODE5LCJpYXQiOjE0ODg3NzU4MTl9.wBwYQjD_owZLqoA1Vf7DkUtwmD2YQrVQvXM3DkyuNCM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
