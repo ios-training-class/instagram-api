@@ -11,8 +11,15 @@
 ## Installation packages
 
    $ npm install
+  
+Or using yarn
 
-## How to
+   $ yarn
+
+## How to run app
+
+  $ npm run dev
+
 
 # API
 
