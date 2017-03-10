@@ -384,10 +384,8 @@ Example request body:
 
 ```
 {
-  "photo": {
-    "description": "Anh dep bla bla",
-    "image: FILE_FORM_DATA
-  }
+  "description": "Anh dep bla bla",
+  "image: FILE_FORM_DATA
 }
 ```
 
