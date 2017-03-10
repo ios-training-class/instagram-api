@@ -66,7 +66,7 @@ Example request body:
 }
 ```
 
-No authentication required, returns a [User](#users-for-authentication)
+No authentication required, returns a User
 
 Required fields: `email`, `password`
 
@@ -86,7 +86,7 @@ Example request body:
 }
 ```
 
-No authentication required, returns a [User](#users-for-authentication)
+No authentication required, returns a User
 
 Required fields: `email`, `username`, `password`
 
