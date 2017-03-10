@@ -8,6 +8,8 @@ var fs = require('fs'),
     errorhandler = require('errorhandler'),
     mongoose = require('mongoose');
 
+require('dotenv').config();
+
 var isProduction = process.env.NODE_ENV === 'production';
 
 // Create global app object
@@ -32,7 +34,7 @@ if (!isProduction) {
 if(isProduction){
   mongoose.connect(process.env.MONGODB_URI);
 } else {
-  mongoose.connect('mongodb://localhost/instagram');
+  mongoose.connect(process.env.MONGODB_URI);
   mongoose.set('debug', true);
 }
 
