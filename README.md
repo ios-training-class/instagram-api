@@ -569,4 +569,4 @@ No authentication required, returns a List of Tags
 
 ### Heroku
 
-[https://tube-instagram.herokuapp.com](https://tube-instagram.herokuapp.com)
+[https://iossimple-instagram.herokuapp.com](https://iossimple-instagram.herokuapp.com)
