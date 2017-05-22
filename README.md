@@ -79,7 +79,7 @@ Example request body:
 ```
 {
   "user":{
-    "username": "exam"
+    "username": "exam",
     "email": "exam@exam.come",
     "password": "examexam"
   }
@@ -223,37 +223,51 @@ Authentication optional, will return multiple photos, ordered by most recent fir
 {
   "photos": [
       {
-          "slug": "anh-dep-1",
-          "title": "anh dep 1",
-          "description": "anh dep 1",
-          "image": "/uploads/images/photos/image-1488804068928.jpg",
-          "createdAt": "2017-03-06T12:41:08.934Z",
-          "updatedAt": "2017-03-06T12:41:08.934Z",
-          "tagList": [],
-          "favorited": false,
-          "favoritesCount": 0,
-          "author": {
-              "username": "exam",
-              "image": "/uploads/images/avatar/image-1488783522157.jpg",
-              "following": false
-          }
-      },
-      {
-          "slug": "anh-dep-2",
-          "title": "anh dep 2",
-          "description": "anh dep 2",
-          "image": "/uploads/images/photos/image-1488804049051.jpg",
-          "createdAt": "2017-03-06T12:40:49.078Z",
-          "updatedAt": "2017-03-06T12:45:52.420Z",
-          "tagList": [],
-          "favorited": false,
-          "favoritesCount": 0,
-          "author": {
-              "username": "exam",
-              "image": "/uploads/images/avatar/image-1488783522157.jpg",
-              "following": false
-          }
+      "slug": "iron-man-1495467741859",
+      "title": "iron man",
+      "description": "iron man",
+      "image": "/uploads/images/photos/image-1495467740305.jpg",
+      "width": 946,
+      "height": 630,
+      "format": "jpg",
+      "originalName": "image-1495467740305",
+      "url": "http://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "secUrl": "https://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "createdAt": "2017-05-22T15:42:21.886Z",
+      "updatedAt": "2017-05-22T15:42:21.886Z",
+      "tagList": [],
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "test01",
+        "bio": "This is a test user",
+        "image": "/uploads/images/default.jpg",
+        "following": false
       }
+    },
+    {
+      "slug": "a-girl-1495462304829",
+      "title": "a girl",
+      "description": "a girl",
+      "image": "/uploads/images/photos/image-1495462300658.jpg",
+      "width": 635,
+      "height": 481,
+      "format": "jpg",
+      "originalName": "image-1495462300658",
+      "url": "http://res.cloudinary.com/dvu7qj3gw/image/upload/v1495462304/ju4vyg9tukzuzj8mq4hq.jpg",
+      "secUrl": "https://res.cloudinary.com/dvu7qj3gw/image/upload/v1495462304/ju4vyg9tukzuzj8mq4hq.jpg",
+      "createdAt": "2017-05-22T14:11:44.840Z",
+      "updatedAt": "2017-05-22T14:11:44.840Z",
+      "tagList": [],
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "test01",
+        "bio": "This is a test user",
+        "image": "/uploads/images/default.jpg",
+        "following": false
+      }
+    }
   ],
   "photosCount": 2
 }
@@ -271,37 +285,51 @@ Authentication required, will return multiple photos created by followed users, 
 {
   "photos": [
       {
-          "slug": "anh-dep-1",
-          "title": "anh dep 1",
-          "description": "anh dep 1",
-          "image": "/uploads/images/photos/image-1488804068928.jpg",
-          "createdAt": "2017-03-06T12:41:08.934Z",
-          "updatedAt": "2017-03-06T12:41:08.934Z",
-          "tagList": [],
-          "favorited": false,
-          "favoritesCount": 0,
-          "author": {
-              "username": "exam",
-              "image": "/uploads/images/avatar/image-1488783522157.jpg",
-              "following": false
-          }
-      },
-      {
-          "slug": "anh-dep-2",
-          "title": "anh dep 2",
-          "description": "anh dep 2",
-          "image": "/uploads/images/photos/image-1488804049051.jpg",
-          "createdAt": "2017-03-06T12:40:49.078Z",
-          "updatedAt": "2017-03-06T12:45:52.420Z",
-          "tagList": [],
-          "favorited": false,
-          "favoritesCount": 0,
-          "author": {
-              "username": "exam",
-              "image": "/uploads/images/avatar/image-1488783522157.jpg",
-              "following": false
-          }
+      "slug": "iron-man-1495467741859",
+      "title": "iron man",
+      "description": "iron man",
+      "image": "/uploads/images/photos/image-1495467740305.jpg",
+      "width": 946,
+      "height": 630,
+      "format": "jpg",
+      "originalName": "image-1495467740305",
+      "url": "http://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "secUrl": "https://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "createdAt": "2017-05-22T15:42:21.886Z",
+      "updatedAt": "2017-05-22T15:42:21.886Z",
+      "tagList": [],
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "test01",
+        "bio": "This is a test user",
+        "image": "/uploads/images/default.jpg",
+        "following": false
       }
+    },
+    {
+      "slug": "a-girl-1495462304829",
+      "title": "a girl",
+      "description": "a girl",
+      "image": "/uploads/images/photos/image-1495462300658.jpg",
+      "width": 635,
+      "height": 481,
+      "format": "jpg",
+      "originalName": "image-1495462300658",
+      "url": "http://res.cloudinary.com/dvu7qj3gw/image/upload/v1495462304/ju4vyg9tukzuzj8mq4hq.jpg",
+      "secUrl": "https://res.cloudinary.com/dvu7qj3gw/image/upload/v1495462304/ju4vyg9tukzuzj8mq4hq.jpg",
+      "createdAt": "2017-05-22T14:11:44.840Z",
+      "updatedAt": "2017-05-22T14:11:44.840Z",
+      "tagList": [],
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "test01",
+        "bio": "This is a test user",
+        "image": "/uploads/images/default.jpg",
+        "following": false
+      }
+    }
   ],
   "photosCount": 2
 }
@@ -317,20 +345,28 @@ No authentication required, will return single photo
 ```
 {
   "photo": {
-    "slug": "anh-dep-1",
-    "title": "anh dep 1",
-    "description": "Anh dep 1",
-    "createdAt": "2017-03-06T12:31:26.037Z",
-    "updatedAt": "2017-03-06T12:31:26.037Z",
-    "tagList": [],
-    "favorited": false,
-    "favoritesCount": 0,
-    "author": {
-      "username": "tiennh",
-      "image": "/uploads/images/avatar/image-1488783522157.jpg",
-      "following": true
+      "slug": "iron-man-1495467741859",
+      "title": "iron man",
+      "description": "iron man",
+      "image": "/uploads/images/photos/image-1495467740305.jpg",
+      "width": 946,
+      "height": 630,
+      "format": "jpg",
+      "originalName": "image-1495467740305",
+      "url": "http://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "secUrl": "https://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "createdAt": "2017-05-22T15:42:21.886Z",
+      "updatedAt": "2017-05-22T15:42:21.886Z",
+      "tagList": [],
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "test01",
+        "bio": "This is a test user",
+        "image": "/uploads/images/default.jpg",
+        "following": false
+      }
     }
-  }
 }
 ```
 
@@ -342,12 +378,12 @@ Example request body:
 
 ```
 {
-  "title": "Anh dep 1",
-  "description": "Anh dep 1",
-  "tagList": ['reactjs', 'angularjs', 'dragons'],
+  "title": "iron man",
+  "description": "iron man",
   "image": FILE_FORM_DATA,
 }
 ```
+Note: you can add "tagList": ['reactjs', 'angularjs', 'dragons'],
 
 Authentication required, will return an Photo
 
@@ -358,21 +394,28 @@ Optional fields: `tagList` as an array of Strings
 ```
 {
   "photo": {
-    "slug": "anh-dep-4",
-    "title": "anh dep 4",
-    "description": "anh dep 4",
-    "image": "/uploads/images/photos/image-1489129455211.png",
-    "createdAt": "2017-03-10T07:04:16.996Z",
-    "updatedAt": "2017-03-10T07:04:16.996Z",
-    "tagList": [],
-    "favorited": false,
-    "favoritesCount": 0,
-    "author": {
-      "username": "exam",
-      "image": "/uploads/images/avatar/image-1488783522157.jpg",
-      "following": false
+      "slug": "iron-man-1495467741859",
+      "title": "iron man",
+      "description": "iron man",
+      "image": "/uploads/images/photos/image-1495467740305.jpg",
+      "width": 946,
+      "height": 630,
+      "format": "jpg",
+      "originalName": "image-1495467740305",
+      "url": "http://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "secUrl": "https://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "createdAt": "2017-05-22T15:42:21.886Z",
+      "updatedAt": "2017-05-22T15:42:21.886Z",
+      "tagList": [],
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "test01",
+        "bio": "This is a test user",
+        "image": "/uploads/images/default.jpg",
+        "following": false
+      }
     }
-  }
 }
 ```
 
@@ -398,21 +441,28 @@ The `slug` also gets updated when the `title` is changed
 ```
 {
   "photo": {
-    "slug": "anh-dep",
-    "title": "anh dep",
-    "description": "Anh dep bla bla",
-    "image": "/uploads/images/photos/image-1489130284972.png",
-    "createdAt": "2017-03-06T12:31:26.037Z",
-    "updatedAt": "2017-03-10T07:16:23.040Z",
-    "tagList": [],
-    "favorited": false,
-    "favoritesCount": 0,
-    "author": {
-      "username": "exam",
-      "image": "/uploads/images/avatar/image-1488783522157.jpg",
-      "following": false
+      "slug": "iron-man-1495467741859",
+      "title": "iron man",
+      "description": "Anh dep bla bla",
+      "image": "/uploads/images/photos/image-1495467740305.jpg",
+      "width": 946,
+      "height": 630,
+      "format": "jpg",
+      "originalName": "image-1495467740305",
+      "url": "http://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "secUrl": "https://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "createdAt": "2017-05-22T15:42:21.886Z",
+      "updatedAt": "2017-05-22T15:42:21.886Z",
+      "tagList": [],
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "test01",
+        "bio": "This is a test user",
+        "image": "/uploads/images/default.jpg",
+        "following": false
+      }
     }
-  }
 }
 ```
 
@@ -510,21 +560,28 @@ No additional parameters required
 ```
 {
   "photo": {
-    "slug": "anh-dep",
-    "title": "anh dep",
-    "description": "Anh dep",
-    "image": "/uploads/images/photos/image-1489130284972.png",
-    "createdAt": "2017-03-06T12:31:26.037Z",
-    "updatedAt": "2017-03-10T07:54:23.514Z",
-    "tagList": [],
-    "favorited": true,
-    "favoritesCount": 1,
-    "author": {
-      "username": "exam",
-      "image": "/uploads/images/avatar/image-1488783522157.jpg",
-      "following": true
+      "slug": "iron-man-1495467741859",
+      "title": "iron man",
+      "description": "iron man",
+      "image": "/uploads/images/photos/image-1495467740305.jpg",
+      "width": 946,
+      "height": 630,
+      "format": "jpg",
+      "originalName": "image-1495467740305",
+      "url": "http://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "secUrl": "https://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "createdAt": "2017-05-22T15:42:21.886Z",
+      "updatedAt": "2017-05-22T15:42:21.886Z",
+      "tagList": [],
+      "favorited": true,
+      "favoritesCount": 1,
+      "author": {
+        "username": "test01",
+        "bio": "This is a test user",
+        "image": "/uploads/images/default.jpg",
+        "following": false
+      }
     }
-  }
 }
 ```
 
@@ -540,21 +597,28 @@ No additional parameters required
 ```
 {
   "photo": {
-    "slug": "anh-dep",
-    "title": "anh dep",
-    "description": "Anh dep",
-    "image": "/uploads/images/photos/image-1489130284972.png",
-    "createdAt": "2017-03-06T12:31:26.037Z",
-    "updatedAt": "2017-03-10T07:54:23.514Z",
-    "tagList": [],
-    "favorited": false,
-    "favoritesCount": 1,
-    "author": {
-      "username": "exam",
-      "image": "/uploads/images/avatar/image-1488783522157.jpg",
-      "following": true
+      "slug": "iron-man-1495467741859",
+      "title": "iron man",
+      "description": "iron man",
+      "image": "/uploads/images/photos/image-1495467740305.jpg",
+      "width": 946,
+      "height": 630,
+      "format": "jpg",
+      "originalName": "image-1495467740305",
+      "url": "http://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "secUrl": "https://res.cloudinary.com/dvu7qj3gw/image/upload/v1495467741/c5cb0nk4nle4qmpzu5ln.jpg",
+      "createdAt": "2017-05-22T15:42:21.886Z",
+      "updatedAt": "2017-05-22T15:42:21.886Z",
+      "tagList": [],
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "test01",
+        "bio": "This is a test user",
+        "image": "/uploads/images/default.jpg",
+        "following": false
+      }
     }
-  }
 }
 ```
 
