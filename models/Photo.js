@@ -8,6 +8,12 @@ var PhotoSchema = new mongoose.Schema({
   title: String,
   description: String,
   image: String,
+  url: String,
+  secUrl: {type: String, default: ""},
+  width:{type: Number, default: 0},
+  height: {type: Number, default: 0},
+  format: String,
+  originalName: String,
   favoritesCount: {type: Number, default: 0},
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
   tagList: [{ type: String }],
@@ -23,7 +29,7 @@ PhotoSchema.pre('validate', function(next){
 });
 
 PhotoSchema.methods.slugify = function() {
-  this.slug = slug(this.title);
+  this.slug = slug(this.title + '-' + Date.now());
 };
 
 PhotoSchema.methods.updateFavoriteCount = function() {
@@ -42,6 +48,12 @@ PhotoSchema.methods.toJSONFor = function(user){
     title: this.title,
     description: this.description,
     image: this.image,
+    width: this.width,
+    height: this.height,
+    format: this.format,
+    originalName: this.originalName,
+    url: this.url,
+    secUrl: this.secUrl,
     createdAt: this.createdAt,
     updatedAt: this.updatedAt,
     tagList: this.tagList,

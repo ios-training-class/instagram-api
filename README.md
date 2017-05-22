@@ -416,6 +416,14 @@ The `slug` also gets updated when the `title` is changed
 }
 ```
 
+### Delete a photo
+
+`DELETE /api/photos/:slug`
+
+No body
+
+Authentication required, returns `204` for success
+
 ### Adding comments to an photo
 
 `POST /api/photos/:slug/comments`
