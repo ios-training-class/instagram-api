@@ -49,6 +49,14 @@ If a request fails any validations, expect a 422 and errors in the following for
 
 404 for Not found requests, when a resource can't be found to fulfill the request
 
+format
+
+```
+{
+  "errors" : "message"
+}
+```
+
 
 ## Endpoints:
 
@@ -422,7 +430,7 @@ The `slug` also gets updated when the `title` is changed
 
 No body
 
-Authentication required, returns `204` for success
+Authentication required, returns `{status: 'OK'}` for success
 
 ### Adding comments to an photo
 
@@ -497,7 +505,7 @@ Authentication optional, returns multiple comments
 
 Authentication required
 
-
+return `{status: 'OK'}` for success
 
 ### Favoriting an photo
 
@@ -573,7 +581,17 @@ No authentication required, returns a List of Tags
 }
 ```
 
-## Deploy
+## How to use POSTMAN
+
+set environment variables: 
+
+Click `SETTING` icon (at TOP-RIGHT) --> Select `Manage Environment` -> Click Add -> 
+
+Fill `Environment Name` : `instagram-api`
+Fill key-value pairs:
+`host`: `https://iossimple-instagram.herokuapp.com`
+`jwt_token_khacpv`: `token return from server`
+Click Update
 
 ### Heroku
 
