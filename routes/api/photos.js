@@ -8,14 +8,7 @@ var auth = require('../auth');
 var multer = require('multer');
 var path = require('path');
 var utils = require('../../utils');
-var cloudinary = require('cloudinary');
-var fs = require('fs');
-
-cloudinary.config({
-  cloud_name: 'dvu7qj3gw',
-  api_key: '612387191157947',
-  api_secret: 'DDwcT6OOV3Qehukc5aPvMz4-CNM'
-});
+var cloudinary = utils.cloudinary;
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -34,7 +27,7 @@ router.param('photo', function (req, res, next, slug) {
     .populate('author')
     .then(function (photo) {
       if (!photo) {
-        return res.sendStatus(404);
+        return utils.errorNotFound(res);
       }
 
       req.photo = photo;
@@ -46,7 +39,7 @@ router.param('photo', function (req, res, next, slug) {
 router.param('comment', function (req, res, next, id) {
   Comment.findById(id).then(function (comment) {
     if (!comment) {
-      return res.sendStatus(404);
+      return utils.errorNotFound(res);
     }
 
     req.comment = comment;
@@ -127,7 +120,7 @@ router.get('/feed', auth.required, function (req, res, next) {
 
   User.findById(req.payload.id).then(function (user) {
     if (!user) {
-      return res.sendStatus(401);
+      return utils.errorUnauthorized(res);
     }
 
     Promise.all([
@@ -151,11 +144,23 @@ router.get('/feed', auth.required, function (req, res, next) {
   });
 });
 
+// return a photo
+router.get('/:photo', auth.optional, function (req, res, next) {
+  Promise.all([
+    req.payload ? User.findById(req.payload.id) : null,
+    req.photo.populate('author').execPopulate()
+  ]).then(function (results) {
+    var user = results[0];
+
+    return res.json({photo: req.photo.toJSONFor(user)});
+  }).catch(next);
+});
+
 // add new photo
 router.post('/', [auth.required, upload.single('image')], function (req, res, next) {
   User.findById(req.payload.id).then(function (user) {
     if (!user) {
-      return res.sendStatus(401);
+      return utils.errorUnauthorized(res);
     }
 
     var photoReq = req.body || {};
@@ -169,6 +174,7 @@ router.post('/', [auth.required, upload.single('image')], function (req, res, ne
     // after saved file, upload to cloudinary
     cloudinary.uploader.upload('./public' + photo.image, function (result) {
       // fetch data from cloudinary
+      photo.cloudinaryId = result.public_id;
       photo.url = result.url;
       photo.width = result.width;
       photo.height = result.height;
@@ -189,23 +195,14 @@ router.post('/', [auth.required, upload.single('image')], function (req, res, ne
   }).catch(next);
 });
 
-// return a photo
-router.get('/:photo', auth.optional, function (req, res, next) {
-  Promise.all([
-    req.payload ? User.findById(req.payload.id) : null,
-    req.photo.populate('author').execPopulate()
-  ]).then(function (results) {
-    var user = results[0];
-
-    return res.json({photo: req.photo.toJSONFor(user)});
-  }).catch(next);
-});
-
 // update photo
 router.put('/:photo', [auth.required, upload.single('image')], function (req, res, next) {
   User.findById(req.payload.id).then(function (user) {
-    if (req.photo.author._id.toString() === req.payload.id.toString()) {
+    var shouldUploadPhoto = false;
+    if (req.photo.author._id.toString() === req.payload.id.toString()) {  // owner photo
+
       if (typeof req.file !== 'undefined') {
+        shouldUploadPhoto = true;
         req.photo.image = '/uploads/images/photos/' + req.file.filename;
       }
 
@@ -221,11 +218,29 @@ router.put('/:photo', [auth.required, upload.single('image')], function (req, re
         req.photo.tagList = req.body.tagList;
       }
 
-      req.photo.save().then(function (photo) {
-        return res.json({photo: photo.toJSONFor(user)});
-      }).catch(next);
+      if (shouldUploadPhoto) {
+        cloudinary.uploader.upload('./public' + req.photo.image, function (result) {
+          // fetch data from cloudinary
+          req.photo.cloudinaryId = result.public_id;
+          req.photo.url = result.url;
+          req.photo.width = result.width;
+          req.photo.height = result.height;
+          req.photo.format = result.format;
+          req.photo.secUrl = result.secure_url;
+          req.photo.originalName = result.original_filename;
+
+          // save to db
+          return req.photo.save().then(function (photo) {
+            return res.json({photo: photo.toJSONFor(user)});
+          });
+        });
+      } else {
+        req.photo.save().then(function (photo) {
+          return res.json({photo: photo.toJSONFor(user)});
+        }).catch(next);
+      }
     } else {
-      return res.sendStatus(403);
+      return utils.errorForbidden(res);
     }
   });
 });
@@ -234,15 +249,15 @@ router.put('/:photo', [auth.required, upload.single('image')], function (req, re
 router.delete('/:photo', auth.required, function (req, res, next) {
   User.findById(req.payload.id).then(function (user) {
     if (!user) {
-      return res.sendStatus(401);
+      return utils.errorUnauthorized(res);
     }
 
     if (req.photo.author._id.toString() === req.payload.id.toString()) {
       return req.photo.remove().then(function () {
-        return res.sendStatus(204);
+        return utils.success(res);
       });
     } else {
-      return res.sendStatus(403);
+      return utils.errorForbidden(res);
     }
   }).catch(next);
 });
@@ -253,7 +268,7 @@ router.post('/:photo/favorite', auth.required, function (req, res, next) {
 
   User.findById(req.payload.id).then(function (user) {
     if (!user) {
-      return res.sendStatus(401);
+      return utils.errorUnauthorized(res);
     }
 
     return user.favorite(photoId).then(function () {
@@ -270,7 +285,7 @@ router.delete('/:photo/favorite', auth.required, function (req, res, next) {
 
   User.findById(req.payload.id).then(function (user) {
     if (!user) {
-      return res.sendStatus(401);
+      return utils.errorUnauthorized(res);
     }
 
     return user.unfavorite(photoId).then(function () {
@@ -308,12 +323,16 @@ router.get('/:photo/comments', auth.optional, function (req, res, next) {
 router.post('/:photo/comments', auth.required, function (req, res, next) {
   User.findById(req.payload.id).then(function (user) {
     if (!user) {
-      return res.sendStatus(401);
+      return utils.errorUnauthorized(res);
     }
 
     var comment = new Comment(req.body);
     comment.photo = req.photo;
     comment.author = user;
+
+    console.log('current user:' + user.email);
+    console.log('comment: ' + comment.body);
+    console.log('photo:' + comment.photo.slug);
 
     return comment.save().then(function () {
       req.photo.comments.push(comment);
@@ -331,10 +350,10 @@ router.delete('/:photo/comments/:comment', auth.required, function (req, res, ne
     req.photo.save()
       .then(Comment.find({_id: req.comment._id}).remove().exec())
       .then(function () {
-        res.sendStatus(204);
+        return utils.success(res);
       });
   } else {
-    res.sendStatus(403);
+    return utils.errorForbidden(res);
   }
 });
 
