@@ -5,6 +5,7 @@ var User = mongoose.model('User');
 
 var PhotoSchema = new mongoose.Schema({
   slug: {type: String, lowercase: true, unique: true},
+  cloudinaryId: String,
   title: String,
   description: String,
   image: String,
@@ -29,7 +30,9 @@ PhotoSchema.pre('validate', function(next){
 });
 
 PhotoSchema.methods.slugify = function() {
-  this.slug = slug(this.title + '-' + Date.now());
+  if(!this.slug){
+    this.slug = slug(this.title + '-' + Date.now());
+  }
 };
 
 PhotoSchema.methods.updateFavoriteCount = function() {
