@@ -1,0 +1,416 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Instagram-api",
+		"_postman_id": "b9e15e8a-4fc5-27f6-032a-e6e36c0f672e",
+		"description": "{\n  \"user\":{\n    \"email\": \"khacpv@gmail.com\",\n    \"password\": \"123456\"\n  }\n}",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"url": "http://localhost:3000/api/users/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user\":{\n    \"email\": \"khacpv@gmail.com\",\n    \"password\": \"123456\"\n  }\n}"
+				},
+				"description": "http://localhost:3000/api/users/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Signup",
+			"request": {
+				"url": "http://localhost:3000/api/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user\":{\n    \"username\": \"botcanh\",\n    \"email\": \"botcanh.muoi@gmail.com\",\n    \"password\": \"123456\"\n  }\n}"
+				},
+				"description": "http://localhost:3000/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Get current user",
+			"request": {
+				"url": "http://localhost:3000/api/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user\":{\n    \"email\": \"khacpv@gmail.com\",\n    \"password\": \"123456\"\n  }\n}"
+				},
+				"description": "http://localhost:3000/api/user"
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"url": "http://localhost:3000/api/user",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user\":{\n    \"email\": \"khacpv@gmail.com\",\n    \"bio\": \"I so handsome\"\n  }\n}"
+				},
+				"description": "http://localhost:3000/api/user"
+			},
+			"response": []
+		},
+		{
+			"name": "User profile",
+			"request": {
+				"url": "http://localhost:3000/api/profiles/khacpv",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "http://localhost:3000/api/profiles/khacpv"
+			},
+			"response": []
+		},
+		{
+			"name": "Follow user",
+			"request": {
+				"url": "http://localhost:3000/api/profiles/botcanh/follow",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "http://localhost:3000/api/profiles/botcanh/follow"
+			},
+			"response": []
+		},
+		{
+			"name": "Unfollow user",
+			"request": {
+				"url": "http://localhost:3000/api/profiles/botcanh/follow",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "http://localhost:3000/api/profiles/botcanh/follow"
+			},
+			"response": []
+		},
+		{
+			"name": "List photos",
+			"request": {
+				"url": "http://localhost:3000/api/photos?limit=20&offset=0",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "http://localhost:3000/api/photos?limit=20&offset=0"
+			},
+			"response": []
+		},
+		{
+			"name": "Feed photos",
+			"request": {
+				"url": "http://localhost:3000/api/photos/feed?limit=20&offset=0",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "http://localhost:3000/api/photos/feed?limit=20&offset=0"
+			},
+			"response": []
+		},
+		{
+			"name": "Get photo",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep-1495648440828",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "http://localhost:3000/api/photo/anh-dep-6-1495446241316"
+			},
+			"response": []
+		},
+		{
+			"name": "Upload photo",
+			"request": {
+				"url": "http://localhost:3000/api/photos",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "anh dep",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "description",
+							"value": "nexus 6p",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"enabled": true,
+							"src": "0402D581-5D1D-4A3C-86AA-E5A9CE98744D.png"
+						},
+						{
+							"key": "tagList",
+							"value": "['android','mobile','vibbidi']",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "http://localhost:3000/api/photos"
+			},
+			"response": []
+		},
+		{
+			"name": "Update photo",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep-1495648440828",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "description",
+							"value": "Vibbidi Nexus 6P",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"enabled": true,
+							"src": "image1.png"
+						},
+						{
+							"key": "title",
+							"value": "Vibbidi",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "tagList",
+							"value": "['vibbidi', 'android', 'test']",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "http://localhost:3000/api/photos/anh-dep-1495642470601"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete photo",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep-1495642650294",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "http://localhost:3000/api/photos/anh-dep-1495642650294"
+			},
+			"response": []
+		},
+		{
+			"name": "Comment photo",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep-1495642713581/comments",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"body\": \"So beautiful\"\n}"
+				},
+				"description": "http://localhost:3000/api/photos/anh-dep-1495642713581/comments"
+			},
+			"response": []
+		},
+		{
+			"name": "Get comments",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep-1495643690345/comments",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"body\": \"So beautiful\"\n}"
+				},
+				"description": "http://localhost:3000/api/photos/anh-dep-1495642713581/comments"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete comment",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep-1495643690345/comments/5925b81b4a77ad09e2c12c7f",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Favorite photo",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep-1495643690345/favorite",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Unfavorite photo",
+			"request": {
+				"url": "http://localhost:3000/api/photos/anh-dep-1495643690345/favorite",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get all tags",
+			"request": {
+				"url": "http://localhost:3000/api/tags",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{jwt_token_khacpv}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

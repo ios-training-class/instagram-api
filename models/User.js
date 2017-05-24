@@ -9,6 +9,7 @@ var UserSchema = new mongoose.Schema({
   email: { type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true },
   bio: String,
   image: String,
+  imageUrl: String,
   favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Photo' }],
   following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   hash: String,
@@ -51,7 +52,7 @@ UserSchema.methods.toProfileJSONFor = function(user) {
   return {
     username: this.username,
     bio: this.bio,
-    image: this.image || '/uploads/images/default.jpg',
+    image: this.imageUrl || '/uploads/images/default.jpg',
     following: user ? user.isFollowing(this._id) : false
   };
 };

@@ -47,7 +47,7 @@ app.use(require('./routes'));
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = new Error({error:'Not found'});
   err.status = 404;
   next(err);
 });
@@ -58,6 +58,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (!isProduction) {
   app.use(function(err, req, res, next) {
+    console.log('ERROR here');
     console.log(err.stack);
 
     res.status(err.status || 500);
