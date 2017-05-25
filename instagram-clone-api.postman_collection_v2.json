@@ -10,7 +10,7 @@
 		{
 			"name": "Login",
 			"request": {
-				"url": "http://localhost:3000/api/users/login",
+				"url": "{{host}}/api/users/login",
 				"method": "POST",
 				"header": [
 					{
@@ -30,7 +30,7 @@
 		{
 			"name": "Signup",
 			"request": {
-				"url": "http://localhost:3000/api/users",
+				"url": "{{host}}/api/users",
 				"method": "POST",
 				"header": [
 					{
@@ -50,7 +50,7 @@
 		{
 			"name": "Get current user",
 			"request": {
-				"url": "http://localhost:3000/api/user",
+				"url": "{{host}}/api/user",
 				"method": "GET",
 				"header": [
 					{
@@ -75,14 +75,9 @@
 		{
 			"name": "Update user",
 			"request": {
-				"url": "http://localhost:3000/api/user",
+				"url": "{{host}}/api/user",
 				"method": "PUT",
 				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					},
 					{
 						"key": "Authorization",
 						"value": "Token {{jwt_token_khacpv}}",
@@ -90,8 +85,33 @@
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"user\":{\n    \"email\": \"khacpv@gmail.com\",\n    \"bio\": \"I so handsome\"\n  }\n}"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "khacpv",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "email",
+							"value": "khacpv@gmail.com",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "bio",
+							"value": "new bio",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"enabled": true,
+							"src": "Screen Shot 2017-05-24 at 14.00.51.png"
+						}
+					]
 				},
 				"description": "http://localhost:3000/api/user"
 			},
@@ -100,7 +120,7 @@
 		{
 			"name": "User profile",
 			"request": {
-				"url": "http://localhost:3000/api/profiles/khacpv",
+				"url": "{{host}}/api/profiles/khacpv",
 				"method": "GET",
 				"header": [
 					{
@@ -117,7 +137,7 @@
 		{
 			"name": "Follow user",
 			"request": {
-				"url": "http://localhost:3000/api/profiles/botcanh/follow",
+				"url": "{{host}}/api/profiles/botcanh/follow",
 				"method": "POST",
 				"header": [
 					{
@@ -134,7 +154,7 @@
 		{
 			"name": "Unfollow user",
 			"request": {
-				"url": "http://localhost:3000/api/profiles/botcanh/follow",
+				"url": "{{host}}/api/profiles/botcanh/follow",
 				"method": "DELETE",
 				"header": [
 					{
@@ -151,7 +171,7 @@
 		{
 			"name": "List photos",
 			"request": {
-				"url": "http://localhost:3000/api/photos?limit=20&offset=0",
+				"url": "{{host}}/api/photos?limit=20&offset=0",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -162,7 +182,7 @@
 		{
 			"name": "Feed photos",
 			"request": {
-				"url": "http://localhost:3000/api/photos/feed?limit=20&offset=0",
+				"url": "{{host}}/api/photos/feed?limit=20&offset=0",
 				"method": "GET",
 				"header": [
 					{
@@ -179,7 +199,7 @@
 		{
 			"name": "Get photo",
 			"request": {
-				"url": "http://localhost:3000/api/photos/anh-dep-1495648440828",
+				"url": "{{host}}/api/photos/anh-dep-1495648440828",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -190,7 +210,7 @@
 		{
 			"name": "Upload photo",
 			"request": {
-				"url": "http://localhost:3000/api/photos",
+				"url": "{{host}}/api/photos",
 				"method": "POST",
 				"header": [
 					{
@@ -218,7 +238,7 @@
 							"key": "image",
 							"type": "file",
 							"enabled": true,
-							"src": "0402D581-5D1D-4A3C-86AA-E5A9CE98744D.png"
+							"src": "image1.png"
 						},
 						{
 							"key": "tagList",
@@ -235,7 +255,7 @@
 		{
 			"name": "Update photo",
 			"request": {
-				"url": "http://localhost:3000/api/photos/anh-dep-1495648440828",
+				"url": "{{host}}/api/photos/anh-dep-1495648440828",
 				"method": "PUT",
 				"header": [
 					{
@@ -249,7 +269,7 @@
 					"formdata": [
 						{
 							"key": "description",
-							"value": "Vibbidi Nexus 6P",
+							"value": "Nexus 6P",
 							"type": "text",
 							"enabled": true
 						},
@@ -280,7 +300,7 @@
 		{
 			"name": "Delete photo",
 			"request": {
-				"url": "http://localhost:3000/api/photos/anh-dep-1495642650294",
+				"url": "{{host}}/api/photos/anh-dep-1495642650294",
 				"method": "DELETE",
 				"header": [
 					{
@@ -297,7 +317,7 @@
 		{
 			"name": "Comment photo",
 			"request": {
-				"url": "http://localhost:3000/api/photos/anh-dep-1495642713581/comments",
+				"url": "{{host}}/api/photos/anh-dep-1495642713581/comments",
 				"method": "POST",
 				"header": [
 					{
@@ -322,7 +342,7 @@
 		{
 			"name": "Get comments",
 			"request": {
-				"url": "http://localhost:3000/api/photos/anh-dep-1495643690345/comments",
+				"url": "{{host}}/api/photos/anh-dep-1495643690345/comments",
 				"method": "GET",
 				"header": [
 					{
@@ -347,7 +367,7 @@
 		{
 			"name": "Delete comment",
 			"request": {
-				"url": "http://localhost:3000/api/photos/anh-dep-1495643690345/comments/5925b81b4a77ad09e2c12c7f",
+				"url": "{{host}}/api/photos/anh-dep-1495643690345/comments/5925b81b4a77ad09e2c12c7f",
 				"method": "DELETE",
 				"header": [
 					{
@@ -364,7 +384,7 @@
 		{
 			"name": "Favorite photo",
 			"request": {
-				"url": "http://localhost:3000/api/photos/anh-dep-1495643690345/favorite",
+				"url": "{{host}}/api/photos/anh-dep-1495643690345/favorite",
 				"method": "POST",
 				"header": [
 					{
@@ -381,7 +401,7 @@
 		{
 			"name": "Unfavorite photo",
 			"request": {
-				"url": "http://localhost:3000/api/photos/anh-dep-1495643690345/favorite",
+				"url": "{{host}}/api/photos/anh-dep-1495643690345/favorite",
 				"method": "DELETE",
 				"header": [
 					{
@@ -398,7 +418,7 @@
 		{
 			"name": "Get all tags",
 			"request": {
-				"url": "http://localhost:3000/api/tags",
+				"url": "{{host}}/api/tags",
 				"method": "GET",
 				"header": [
 					{
